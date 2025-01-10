@@ -1,0 +1,344 @@
+@import url('https://fonts.googleapis.com/css2?family=Iceland&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Iceland&family=Krona+One&display=swap');
+
+*{
+    user-select: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Krona One", sans-serif;
+}
+body {
+    background-color: #121212;
+}
+
+body header {
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3%;
+    position: fixed;
+    top: 0;
+    background-color: #121212;
+    z-index: 10;
+}
+
+body header .logo img {
+    width: 15%;
+}
+body header .login{
+    margin-right: 3vw;
+    display: flex;
+    gap: 10px;
+}
+body header .login a{
+    width: 100px;
+    height: 40px;
+    padding: 10px;
+    color: #121212;
+    font-family: "Krona One", sans-serif;
+    font-size: 70%;
+    text-decoration: none;
+    background-color: #9EFF00;
+    border: none;
+    border-radius: 20px;
+    transition: .8s;
+    text-align: center; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+body header .login a:hover{
+    cursor: pointer;
+    opacity: .7;
+}
+main #main{
+    margin-top: 10vh;
+    width: 100%;
+    height: 80vh;
+    background-image: url(imagens/main-image/Banner.jpg);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+main #main h1{
+    font-size: 3rem;
+    font-weight: 900;
+    font-family: "Krona One", sans-serif;
+    color: rgb(20, 20, 20);
+    background-color: #9EFF00;
+    padding: 20px;
+}
+main #first{
+    margin-top: 10vh;
+    margin-left: 2vw;
+}
+main #first .title h1{
+    font-size: 2rem;
+    font-weight: 100;
+    color: rgb(247, 247, 247);
+    margin-bottom: 7vh;
+}
+main .gallery{
+    width: 100%;
+    display: flex;
+    gap: 40px;
+}
+main .gallery .photo{
+    width: 15%;
+    transition: .5s;
+}
+main .gallery .photo:hover{
+    cursor: pointer;
+    transform: scale(1.02);
+    opacity: .6;
+}
+main .gallery .photo img{
+    width: 100%;
+}
+main .gallery .photo h1{
+    font-size: .9rem;
+    color: rgb(245, 245, 245);
+}
+main .gallery .photo h2{
+    font-size: .6rem;
+    color: rgba(245, 245, 245, 0.473);
+}
+main .gallery .image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+main .gallery .image img{
+    width: 40px;
+    position: relative;
+    opacity: .1;
+    cursor: pointer;
+}
+main #second{
+    margin-top: 10vh;
+    margin-left: 2vw;
+}
+main #second .title h1{
+    font-size: 2rem;
+    font-weight: 100;
+    color: rgb(247, 247, 247);
+    margin-bottom: 7vh;
+}
+main #third{
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+main #third img{
+    width: 80%;
+}
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    overflow: hidden;
+}
+
+#slider {
+    white-space: nowrap;
+    overflow: hidden;
+    animation: slide 6s infinite;
+}
+
+#slider p {
+    display: inline-block;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 1s;
+}
+.btn-primary {
+    --bs-btn-color: #121212;
+    --bs-btn-bg: #0d6dfd00;
+    --bs-btn-border-color: #0d6dfd00;
+    --bs-btn-hover-color: #030303b6;
+    --bs-btn-hover-bg: #9EFF00;
+    --bs-btn-hover-border-color: #9EFF00;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #111111;
+    --bs-btn-active-bg: #0a58ca;
+    --bs-btn-active-border-color: #52be0a;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #0d6efd;  
+    --bs-btn-disabled-border-color: #0d6efd;
+} 
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    33.33% {
+        transform: translateX(-100%);
+    }
+    66.66% {
+        transform: translateX(-200%);
+    }
+    100% {
+        transform: translateX(-200%);
+    }
+}
+
+
+@keyframes seta {
+    0%, 100% {
+        left: 0;
+    }
+    50% {
+        left: 5px;
+    }
+}
+
+@media (max-width: 714px) {
+    main #main{
+        background-position: center;
+    }
+    body header .logo img{
+        width: 25%;
+    }
+    body header .login img {
+        width: 15%;
+        transition: .5s;
+    }
+    body header .login span {
+        font-size: small;
+    }
+    main #main h1{
+        font-size: 2rem;
+    }
+    main .gallery .image{
+        display: none;
+    }
+    main #first .title h1{
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    main #second .title h1{
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    main #second{
+        margin-top: 10vh;
+        margin-left: 0vw;
+    }
+    main #first{
+        margin-top: 10vh;
+        margin-left: 0vw;
+    }
+    main .gallery{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 20px;
+    }
+    main .gallery .photo{
+        width: 40%;
+    }
+    main #third{
+        height: 20vh;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+    }
+    main #third img{
+        width: 100%;
+        bottom: 0;
+    }
+}
+@media (max-width: 510px) {
+    main #main h1{
+        font-size: 1.5rem;
+    }
+    body header .logo img{
+        width: 28%;
+    }
+}
+@media (max-width: 390px) {
+    main #main h1{
+        font-size: 1rem;
+    }
+    body header .logo img{
+        width: 28%;
+    }
+}
+
+
+#gallery-jerseys {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 16px; 
+    max-width: 80%;
+    justify-content: center;
+    font-size: .6rem;
+    font-size: 12px;
+    color: rgba(250, 235, 215, 0.825);
+    margin-top: 30px;
+}
+.jersey-box:hover{
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: .5s;
+    opacity: .6;
+}
+
+.jersey-box .image img{
+    width: 40px;
+    position: relative;
+    opacity: .1;
+    cursor: pointer;
+}
+.jersey-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    padding: 16px;
+    border: 1px solid #cf10166b;
+    border-radius: 8px;
+    background-color: #ffffff;
+    width: 200px;
+    text-align: center;
+    
+}
+
+.jersey-box img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 8px;
+    border-radius: 2px;
+}
+
+.jersey-box span {
+    font-size: 1rem;
+    color: #131313b5;
+    margin-bottom: 8px;
+}
+
+.jersey-box h1{
+    text-align: left;
+    color: #131313;
+    display: flex;
+    margin-top: 5px;
+}
+.jersey-box h3{
+    text-align: left;
+    color: #131313;
+    font-weight: 300;
+    display: flex;
+    margin-top: 5px;
+}
+
+#textofooter{
+    font-size: 10px;
+}

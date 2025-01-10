@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>America Imports - Cadastro</title>
+    <link rel="stylesheet" href="/cadastro.css">
+    <link rel="shortcut icon" href="imagens/logos/logo.png" type="image/x-icon">
+</head>
+<body>
+    <main>
+        <div class="aside">
+            <div class="logo">
+                <a href="/"><img src="imagens/logos/logo-2.png" alt="" srcset=""></a>
+            </div>
+            <div class="title">
+                <h1>Seu Jogo, Seu Estilo.</h1>
+            </div>
+        </div>
+        
+        <div class="other-side">
+            <div class="adv">
+                <span>Ao continuar, afirmo que concordo com a Política de privacidade e os Termos de uso da America Imports.</span>
+            </div>
+            <div class="main-container">
+                <h1>Cadastro</h1>
+
+                <form id="formulario" action="http://localhost:3000/submit" method="post">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required required placeholder="Insira seu Nome.">
+                
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required placeholder="Insira seu E-mail.">
+                
+                    <label for="text">endereço:</label>
+                    <input type="text" id="endereco" name="endereco" required placeholder="Insira seu Endereço">
+                    
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha" required placeholder="Senha.">
+                
+                    <label for="confirmar_senha">Confirmar Senha:</label>
+                    <input type="password" id="confirmar_senha" name="confirmar_senha" required placeholder="Confirmar Senha">
+                
+                    <input type="submit" value="Enviar">
+                
+                </form>
+            </div>
+            <div class="footer-logo">
+                <img src="../../images/logos/america-logo.png" width="100px" alt="" srcset="">
+            </div>
+        </div>
+    </main>
+</body>
+</html>
