@@ -9,45 +9,35 @@
     <link rel="shortcut icon" href="/imagens/logos/logo.png" type="image/x-icon">
 </head>
 <body>
-    <header>
-        <div class="back">
-            <a href="/">
-                <img src="/imagens/logos/logo-2.png" alt="mim" srcset="">
-            </a>
-        </div>
-    </header>
-    <% if (typeof mensagem !== 'undefined') { %>
+        <header>
+            <div class="logo">
+                <img src="/imagens/logos/logo-2.png" alt="logo">
+            </div>
+
+        </header>
+    
+    <!-- <% if (typeof mensagem !== 'undefined') { %>
         <div class="success-message">
             <p><%= mensagem %></p>
         </div>
-    <% } %>
+    <% } %> -->
    
     <main>
         <div class="product-details">
             <img src="<%= produto.img_produto %>" alt="<%= produto.nom_produto %>">
         </div>
-
-
-        
-        <form action="/finalizar-compra" method="POST">
+        <form action="/carrinho" method="POST">
             <input type="hidden" name="id_produto" value="<%= produto.id_produtos %>">
             <h2><%= produto.nom_produtos %></h2>
-            <p>Preço: R$ <%= parseFloat(produto.val_produtos).toFixed(2) %></p>
-            <p>Quantidade disponível:  <%= produto.qtd_produtos %> </p>
-            <input type="number" placeholder="Digite"
-            id="quantidade" name="quantidade" min="1" max="<%= produto.qtd_produtos %>" required>
-
-
-
-
-            <label for="tipo-pagamento">Tipo de pagamento:</label>
-            <select id="tipo-pagamento" name="tipo_pagamento" required>
-                <option value="cartao_credito">Cartão de Crédito</option>
-                <option value="boleto">Boleto</option>
-                <option value="pix">Pix</option>
+            <p style="font-size: 20px;">Preço: R$ <%= parseFloat(produto.val_produtos).toFixed(2) %></p>            
+            <label for="tamanho">Tamanho:</label>
+            <select id="tamanho" name="tamanho" required>
+                <option value="P">P</option>
+                <option value="M">M</option>
+                <option value="G">G</option>
             </select>
-
-            <button type="submit">Finalizar Compra</button>
+            
+            <button type="submit">Adicionar ao carrinho</button>
         </form>
     </main>
 </body>

@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>America Imports - Carrinho</title>
+  <link href="/css/compraTeste.css" rel="stylesheet">
+  <link rel="shortcut icon" href="/imagens/logos/logo.png" type="image/x-icon">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="header-content">
+        <div class="header-left">
+          <h1>Carrinho de Compras</h1>
+          <nav class="main-nav">
+            <a href="/">Inicio</a>
+            <a href="#">Camisas</a>
+            </nav>
+        </div>
+        <div class="cart-icon">
+          <i data-lucide="shopping-cart"></i>
+          <span class="cart-count">1</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <div class="main-content">
+        <!-- <h2>Carrinho de Compras</h2> -->
+        
+        <div class="cart-container">
+          <!-- Cart Items -->
+          <div class="cart-items">
+            <div class="cart-item">
+              <div class="item-checkbox">
+                <input type="checkbox" id="item1" name="cart-items" checked>
+              </div>
+              <img src="https://images.tcdn.com.br/img/img_prod/1044362/camisa_brasil_i_2022_nike_torcedor_masculina_amarela_1759_1_4222d5c12ed6e6408cf52dab001f8b41.jpg" alt="Imagem da camisa">
+              <div class="item-details">
+                <h3>Nome da camisa</h3>
+                <p class="size">Tamanho da camisa</p>
+                <div class="quantity-controls">
+                  <button><i data-lucide="minus"></i></button>
+                  <span>1</span>
+                  <button><i data-lucide="plus"></i></button>
+                </div>
+              </div>
+              <div class="item-price">
+                <p>R$ 599,99</p>
+                <button class="remove-item">
+                  <i data-lucide="trash-2"></i>
+                </button>
+              </div>
+            </div>
+
+            <form action="/">
+            <button class="continue-shopping">
+              <i data-lucide="arrow-left"></i>
+              Continuar comprando 
+            </button>
+        </form>
+          </div>
+
+          <!-- Order Summary -->
+          <div class="order-summary">
+            <h3>Resumo do Pedido</h3>
+            <div class="summary-details">
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <span>R$ 429.97</span>
+              </div>
+              <div class="summary-row">
+                <span>Frete</span>
+                <span>R$ 12.99</span>
+              </div>
+              <div class="summary-total">
+                <span>Total</span>
+                <span>R$ 442.96</span>
+              </div>
+            </div>
+            <button class="checkout-button">Finalizar Compra</button>
+
+        </div>
+        
+      </div>
+      </div>
+      
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="#">Return Policy</a>
+          <a href="#">FAQ</a>
+          
+        </div>
+        <div class="social-links">
+          <a href="#"><i data-lucide="instagram"></i></a>
+          <a href="#"><i data-lucide="facebook"></i></a>
+          <a href="#"><i data-lucide="message-circle"></i></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+    
+  </script>
+</body>
+</html>

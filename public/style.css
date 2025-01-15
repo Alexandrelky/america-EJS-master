@@ -29,7 +29,7 @@ body header .logo img {
     width: 15%;
 }
 body header .login{
-    margin-right: 3vw;
+    margin-right: 4vw;
     display: flex;
     gap: 10px;
 }
@@ -54,6 +54,13 @@ body header .login a:hover{
     cursor: pointer;
     opacity: .7;
 }
+.cart-icon {
+    position: relative;
+    color: #9EFF00;
+    margin-top: 7px;
+    margin-left: 5px;
+  }
+  
 main #main{
     margin-top: 10vh;
     width: 100%;

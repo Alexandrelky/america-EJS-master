@@ -6,6 +6,7 @@
     <title>America Imports - Inicio</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="shortcut icon" href="imagens/logos/logo.png" type="image/x-icon">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
     <header>
@@ -13,12 +14,28 @@
             <img src="imagens/logos/logo-2.png" alt="logo">
         </div>
         <div class="login">
+                <!-- <a href="/login">Login</a>
+                <a href="/cadastro">Cadastro</a> -->
+        
+
+            <% if (user) { %>               
+                <span style="color: rgb(25, 183, 25); margin-top: 10px; margin-right: 7px;">Olá, <%= user.nome %>! </span>
+                <a href="/logout" class="btn">Logout</a>
+               
+                <div class="cart-icon">
+                  <i data-lucide="shopping-cart"></i>
+                    <!-- <span class="cart-count">1</span> -->  
+                </div>
+               
+            <% } else { %>
                 <a href="/login">Login</a>
                 <a href="/cadastro">Cadastro</a>
-        </div>
+            <% } %>
+    </div> 
     </header>
     <main>
         <section id="main">
+            
             <h1>Seu jogo, seu estilo.</h1>
         </section>
         
@@ -26,7 +43,7 @@
             <div class="title">
                 <h1>Regatas de Basquete</h1>
             </div>
-
+          
             
         <form action="/compra" method="post"> 
             <div id="gallery-jerseys">
@@ -42,6 +59,7 @@
                     </div>
                     <% } %>
                 <% }); %>
+                
                     </div>
         </section>
 
@@ -78,5 +96,13 @@
             </div>
         </footer>
         </div>
+
+
+
+        <script>
+            // Initialize Lucide icons
+            lucide.createIcons();
+            
+          </script>
 </body>
 </html>

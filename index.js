@@ -5,6 +5,8 @@ const path = require('path');
 const recebe_dadosCad = require('./dataBase/Insert_valida');
 const { title } = require('process');
 const { connection_func } = require('./dataBase/db');
+const session = require('express-session'); //bagulho do nome do usuario na tela apos logado
+
 
 const connection = connection_func();
 const app = express();
@@ -12,6 +14,15 @@ const port = 3000;
 
 app.use(express.static(path.join(__dirname, '..')));
 app.use(express.static('public'))
+app.use(session({
+    secret: 'sua_chave_secreta',
+    resave: false,
+    saveUninitialized: false
+}));
+
+
+
+
 app.set('view engine' , 'ejs')
 
 
@@ -21,7 +32,7 @@ app.set('view engine' , 'ejs')
 
 //A partir daqui Rotas 
 app.get('/', (req, res) => {
-    // const user = req.session?.user || null; // Verifica se o usuário está logado
+    const user = req.session?.user || null;
     // Primeira consulta: Buscar usuários
     connection.query('SELECT * FROM usuarios', (err, usuarios) => {
         if (err) {
@@ -37,8 +48,9 @@ app.get('/', (req, res) => {
                 return;
             }
             // const user = req.session.user || null;
-      
-         res.render('index', { usuarios, produtos });
+            // const user = req.session.user || null;
+        const user = req.session.user || null;
+         res.render('index', { usuarios, produtos, user });
         });
     });
 });
@@ -48,9 +60,9 @@ app.get('/', (req, res) => {
 
 
 
-app.get('/login', (req, res) =>{
-    res.render('components/login')
-}) 
+// app.get('/login', (req, res) =>{
+//     res.render('components/login')
+// }) 
 
 app.get('/cadastro', (req, res)=>{
     res.render('components/cadastro')
@@ -65,25 +77,64 @@ app.post('/submit', (req, res) => {
 
     recebe_dados.insertData(nome, email, endereco, senha);
 
-    res.send('Dados inseridos com sucesso!');
+    res.render('components/login')
 });
 
-app.post('/login', (req, res) => {
-    const { email, senha } = req.body;
 
-    recebe_dados.validateUser(email, senha, (err, isValid) => {
-        if (err) {
-        res.status(500).json({ error: 'Erro interno do servidor' });
-        return;
-    }
-        if (isValid) {
-            res.redirect('/logged.html'); 
-        } else {
-        res.status(401).json({ error: 'Email ou senha incorretos' });
+
+
+app.get('/login', (req, res) => {
+    res.render('components/login');
+});
+
+// app.post('/login', (req, res) => {
+//     const { email, senha } = req.body;
+
+//     recebe_dados.validateUser(email, senha, (err, isValid) => {
+//         if (err) {
+//         res.status(500).json({ error: 'Erro interno do servidor' });
+//         return;
+//     }
+//         // if (isValid) {
+//         //     res.render('components/login'); 
+//         // } else {
+//         // res.status(401).json({ error: 'Email ou senha incorretos' });
             
+//         // }
+//     });
+// });
+app.post('/valida', (req, res) => {
+    const { email, password } = req.body;
+
+    // Valida o login
+    recebe_dados.validateUser(email, password, (err, user) => {
+        
+        console.log(email, password)
+        console.log(user)
+
+        if (err) {
+            res.status(500).json({ error: 'Erro interno do servidor' });
+            return;
+        }
+
+        if (user) { // se login for válido, retorna:
+            req.session.user = { id: user.id, nome: user.nome }; // Salva o ID e o nome do usuário na sessão
+            console.log(user.nome)
+            res.redirect('/');
+        } else {
+            res.redirect('/login');
+            console.log('Login falhou.');
         }
     });
 });
+
+
+app.get('/logout', (req, res) => {
+    req.session.destroy(() => {
+        res.redirect('/login'); 
+    });
+});
+
 
 app.get('/logged.html', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'logged.html'));
@@ -106,10 +157,12 @@ app.get('/compra/:id', (req, res) => {
             }
         
     });
+    // const user = req.session.user || null;
+    // res.render('index', {  user });
 });
 
 
-app.post('/finalizar-compra', (req, res) => {
+app.post('/carrinho', (req, res) => {
     const { id_produto, quantidade } = req.body;
 
     const sql = 'UPDATE produtos SET qtd_produtos = qtd_produtos - ? WHERE id_produtos = ?';
@@ -126,7 +179,7 @@ app.post('/finalizar-compra', (req, res) => {
                 return res.status(500).send('Erro ao buscar dados do produto.');
             }
 
-            res.render('components/compra', { mensagem: 'Pagamento efetuado com sucesso, neném!', produto: results[0] });
+            res.render('components/compraTeste', { produto: results[0] });
         });
     });
 });
